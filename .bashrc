@@ -5,25 +5,14 @@ eval "$(starship init bash)"
 alias ls='eza --icons'
 alias ll='eza --icons -la'
 alias cat='bat'
-alias radio="python3 ~/clawd/projects/radiooooo/radio.py"
-alias radio="python3 ~/clawd/projects/radiooooo/radio.py"
 alias radio="python3 ~/Projects/radiooooo/radio.py"
 alias books="ls ~/Library/Mobile\ Documents/iCloud~com~apple~iBooks/Documents/"
-readbook() {
-  local dir=~/Library/Mobile\ Documents/iCloud~com~apple~iBooks/Documents
-  local file=$(ls "$dir"/*.epub 2>/dev/null | fzf --prompt="Pick a book: ")
-  [ -n "$file" ] && bookokrat "$file"
-}
 readbook() {
   local dir="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
   local file=$(ls "$dir"/*.epub 2>/dev/null | sed "s|.*/||" | fzf --prompt="📖 Pick a book: ")
   [ -n "$file" ] && bookokrat "$dir/$file"
 }
 nsend() { scp -r "$1" "$HOME_SERVER":~/drop/; }
-
-
-
-
 
 # Convert documents via home server (PDF→EPUB, etc.)
 # Usage: nconvert <file> [format]
@@ -44,7 +33,7 @@ nconvert() {
     scp -r "$file" "$HOME_SERVER":~/drop/ || { echo "Failed to send file"; return 1; }
     
     echo "⚙️  Converting to $fmt..."
-    ssh "$HOME_SERVER" "bash ~/clawd/scripts/doc-convert.sh \"\$HOME/drop/$name\" -f $fmt" || { echo "Conversion failed"; return 1; }
+    ssh "$HOME_SERVER" "bash ~/scripts/doc-convert.sh \"\$HOME/drop/$name\" -f $fmt" || { echo "Conversion failed"; return 1; }
     
     echo "📥 Fetching result..."
     scp ""$HOME_SERVER":~/drop/${base}.${fmt}" . || { echo "Failed to fetch result"; return 1; }
@@ -52,13 +41,12 @@ nconvert() {
     echo "✅ Done: $base.$fmt"
 }
 
-# Rook terminal capture — syncs compile/run output to home server
+# Terminal capture — syncs compile/run output to home server
 rr() {
     echo "=== $(date) | $* ===" > .terminal.log
     "$@" 2>&1 | tee -a .terminal.log
 }
 
-# Launch Rook study session
+# Launch study session
 alias rook="bash ~/ClawdbotSync/terminal-classroom/rook-session.sh"
-alias cb="bash ~/ClawdbotSync/terminal-classroom/claude-chat.sh"
 alias cb="bash ~/ClawdbotSync/terminal-classroom/claude-chat.sh"
