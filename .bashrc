@@ -1,3 +1,6 @@
+# Home server — set this to your server hostname/alias
+HOME_SERVER="${HOME_SERVER:-homeserver}"
+
 eval "$(starship init bash)"
 alias ls='eza --icons'
 alias ll='eza --icons -la'
@@ -16,13 +19,13 @@ readbook() {
   local file=$(ls "$dir"/*.epub 2>/dev/null | sed "s|.*/||" | fzf --prompt="📖 Pick a book: ")
   [ -n "$file" ] && bookokrat "$dir/$file"
 }
-nsend() { scp -r "$1" north:~/drop/; }
+nsend() { scp -r "$1" "$HOME_SERVER":~/drop/; }
 
 
 
 
 
-# Convert documents via north (PDF→EPUB, etc.)
+# Convert documents via home server (PDF→EPUB, etc.)
 # Usage: nconvert <file> [format]
 # Example: nconvert paper.pdf epub
 nconvert() {
@@ -37,19 +40,19 @@ nconvert() {
         return 1
     fi
     
-    echo "📤 Sending $name to north..."
-    scp -r "$file" north:~/drop/ || { echo "Failed to send file"; return 1; }
+    echo "📤 Sending $name to home server..."
+    scp -r "$file" "$HOME_SERVER":~/drop/ || { echo "Failed to send file"; return 1; }
     
     echo "⚙️  Converting to $fmt..."
-    ssh north "bash ~/clawd/scripts/doc-convert.sh \"\$HOME/drop/$name\" -f $fmt" || { echo "Conversion failed"; return 1; }
+    ssh "$HOME_SERVER" "bash ~/clawd/scripts/doc-convert.sh \"\$HOME/drop/$name\" -f $fmt" || { echo "Conversion failed"; return 1; }
     
     echo "📥 Fetching result..."
-    scp "north:~/drop/${base}.${fmt}" . || { echo "Failed to fetch result"; return 1; }
+    scp ""$HOME_SERVER":~/drop/${base}.${fmt}" . || { echo "Failed to fetch result"; return 1; }
     
     echo "✅ Done: $base.$fmt"
 }
 
-# Rook terminal capture — syncs compile/run output to north
+# Rook terminal capture — syncs compile/run output to home server
 rr() {
     echo "=== $(date) | $* ===" > .terminal.log
     "$@" 2>&1 | tee -a .terminal.log
