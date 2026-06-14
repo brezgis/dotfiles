@@ -1,3 +1,6 @@
+# Interactive shells only (skip for ssh-command / scripts)
+case $- in *i*) ;; *) return ;; esac
+
 eval "$(starship init bash)"
 
 # Quality-of-life aliases
