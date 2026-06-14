@@ -1,3 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
