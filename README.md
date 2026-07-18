@@ -5,9 +5,12 @@ Anna's terminal configs. Catppuccin Mocha everything.
 ## What's here
 
 - `.tmux.conf` — tmux config (Ctrl+A prefix, mouse, Catppuccin Mocha borders, 256color)
-- `.bashrc` — starship prompt, eza/bat aliases (`ls` → `eza --icons`, `ll` → `eza --icons -la`, `cat` → `bat`)
-- `.bash_profile` — PATH setup, conda init, sources .bashrc
+- `.bashrc` — starship prompt, eza/bat aliases (`ls` → `eza --icons`, `ll` → `eza --icons -la`, `cat` → `bat`), interactive-only guard
+- `.bash_profile` — Homebrew shellenv, PATH setup, conda init, sources .bashrc (macOS paths)
 - `Brewfile` — full Homebrew bundle (formulae, casks, VS Code extensions)
+
+The last couple of aliases in `.bashrc` point at scripts that live outside this
+repo — drop or edit those if you're borrowing the config.
 
 ## Setup on a new machine
 
@@ -45,3 +48,7 @@ git push
 - **Prompt:** [Starship](https://starship.rs)
 - **Shell:** bash
 - **Tools:** eza, bat, fastfetch, lazygit, glow, tmux, cbonsai, asciiquarium
+
+## License
+
+MIT — see [LICENSE](LICENSE).
