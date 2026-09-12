@@ -1,6 +1,6 @@
 # dotfiles
 
-Anna's terminal configs. Rosé Pine Moon everything.
+Anna's terminal configs. Catppuccin Mocha everything.
 
 ## Layout
 
@@ -32,7 +32,7 @@ bat cache --build
 ## Stack
 
 - **Terminal:** iTerm2 + JetBrains Mono Nerd Font
-- **Colors:** [Rosé Pine Moon](https://rosepinetheme.com)
+- **Colors:** [Catppuccin Mocha](https://catppuccin.com)
 - **Shell:** zsh + zsh-autosuggestions + zsh-syntax-highlighting
 - **Prompt:** [Starship](https://starship.rs)
 - **Tools:** eza, bat, fzf, zoxide, lazygit, tmux, fastfetch

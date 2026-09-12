@@ -23,13 +23,13 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # ---- environment -----------------------------------------------------------
 export EDITOR=nvim
 export VISUAL=nvim
-export BAT_THEME="rose-pine-moon"
+export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_OPTS="
-  --color=fg:#908caa,bg:#232136,hl:#ea9a97
-  --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
-  --color=border:#44415a,header:#3e8fb0,gutter:#232136
-  --color=spinner:#f6c177,info:#9ccfd8
-  --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#c4a7e7"
+  --color=fg:#a6adc8,bg:#1e1e2e,hl:#fab387
+  --color=fg+:#cdd6f4,bg+:#313244,hl+:#fab387
+  --color=border:#45475a,header:#89b4fa,gutter:#1e1e2e
+  --color=spinner:#f9e2af,info:#94e2d5
+  --color=pointer:#cba6f7,marker:#f38ba8,prompt:#cba6f7"
 
 # ---- aliases ---------------------------------------------------------------
 alias ls='eza --icons'
@@ -56,7 +56,7 @@ command -v starship >/dev/null && eval "$(starship init zsh)"
 # plugins (must be last; syntax-highlighting must be the very last)
 [ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && \
   source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6e6a86'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c7086'
 [ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
   source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 

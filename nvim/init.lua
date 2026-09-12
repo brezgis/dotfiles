@@ -1,4 +1,4 @@
--- Minimal neovim. Rosé Pine Moon. Opens instantly, plain vim keys.
+-- Minimal neovim. Catppuccin Mocha. Opens instantly, plain vim keys.
 local o = vim.opt
 o.number = true
 o.relativenumber = false
@@ -33,9 +33,9 @@ if not vim.uv.fs_stat(lazypath) then
 end
 o.rtp:prepend(lazypath)
 require("lazy").setup({
-  { "rose-pine/neovim", name = "rose-pine", priority = 1000,
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000,
     config = function()
-      require("rose-pine").setup({ variant = "moon" })
-      vim.cmd.colorscheme("rose-pine")
+      require("catppuccin").setup({ flavour = "mocha" })
+      vim.cmd.colorscheme("catppuccin")
     end },
 }, { ui = { border = "rounded" }, change_detection = { notify = false } })

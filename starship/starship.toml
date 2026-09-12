@@ -1,5 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-palette = "rose_pine_moon"
+palette = "catppuccin_mocha"
 add_newline = true
 
 format = """
@@ -8,27 +8,27 @@ $character"""
 
 right_format = "$time"
 
-[palettes.rose_pine_moon]
-base    = "#232136"
-surface = "#2a273f"
-overlay = "#393552"
-muted   = "#6e6a86"
-subtle  = "#908caa"
-text    = "#e0def4"
-love    = "#eb6f92"
-gold    = "#f6c177"
-rose    = "#ea9a97"
-pine    = "#3e8fb0"
-foam    = "#9ccfd8"
-iris    = "#c4a7e7"
+[palettes.catppuccin_mocha]
+base    = "#1e1e2e"
+mantle = "#181825"
+surface0 = "#313244"
+overlay0   = "#6c7086"
+subtext0  = "#a6adc8"
+text    = "#cdd6f4"
+red    = "#f38ba8"
+yellow    = "#f9e2af"
+peach    = "#fab387"
+blue    = "#89b4fa"
+teal    = "#94e2d5"
+mauve    = "#cba6f7"
 
 [character]
-success_symbol = "[❯](bold iris)"
-error_symbol   = "[❯](bold love)"
-vimcmd_symbol  = "[❮](bold foam)"
+success_symbol = "[❯](bold mauve)"
+error_symbol   = "[❯](bold red)"
+vimcmd_symbol  = "[❮](bold teal)"
 
 [directory]
-style = "bold foam"
+style = "bold teal"
 truncation_length = 3
 truncate_to_repo = true
 read_only = " 󰌾"
@@ -36,11 +36,11 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
 symbol = " "
-style = "iris"
+style = "mauve"
 format = "[$symbol$branch]($style) "
 
 [git_status]
-style = "rose"
+style = "peach"
 format = "([$all_status$ahead_behind]($style) )"
 conflicted = "="
 ahead = "⇡${count}"
@@ -54,31 +54,31 @@ deleted = "✘${count}"
 
 [python]
 symbol = " "
-style = "gold"
+style = "yellow"
 format = '[${symbol}${version}( \($virtualenv\))]($style) '
 
 [nodejs]
 symbol = " "
-style = "pine"
+style = "blue"
 format = "[$symbol($version)]($style) "
 
 [java]
 symbol = " "
-style = "rose"
+style = "peach"
 format = "[$symbol($version)]($style) "
 
 [haskell]
 symbol = " "
-style = "iris"
+style = "mauve"
 format = "[$symbol($version)]($style) "
 
 [cmd_duration]
 min_time = 2000
-style = "muted"
+style = "overlay0"
 format = "[took $duration]($style) "
 
 [time]
 disabled = false
-style = "muted"
+style = "overlay0"
 format = "[$time]($style)"
 time_format = "%H:%M"
