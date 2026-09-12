@@ -27,7 +27,7 @@ brew bundle
 bat cache --build
 ```
 
-`install.sh` symlinks everything into place and backs up anything it replaces.
+`install-tools.sh` installs the toolkit into `~/.local/bin` without sudo (Linux or Mac). `install.sh` symlinks everything into place and backs up anything it replaces.
 
 ## Stack
 

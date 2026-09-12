@@ -32,14 +32,11 @@ export FZF_DEFAULT_OPTS="
   --color=pointer:#cba6f7,marker:#f38ba8,prompt:#cba6f7"
 
 # ---- aliases ---------------------------------------------------------------
-alias ls='eza --icons'
-alias ll='eza --icons -la'
-alias lt='eza --icons --tree --level=2'
-alias cat='bat'
-alias vim='nvim'
-alias vi='nvim'
-alias lg='lazygit'
-alias top='btop'
+command -v eza  >/dev/null && { alias ls='eza --icons'; alias ll='eza --icons -la'; alias lt='eza --icons --tree --level=2'; } || alias ll='ls -la'
+command -v bat  >/dev/null && alias cat='bat'
+command -v nvim >/dev/null && { alias vim='nvim'; alias vi='nvim'; }
+command -v btop >/dev/null && alias top='btop'
+command -v lazygit >/dev/null && alias lg='lazygit'
 alias tn="ssh -t north 'tmux new -A -s main'"   # north, straight into tmux
 y() {  # yazi, and cd to wherever you ended up
   local tmp; tmp="$(mktemp -t yazi-cwd.XXXXXX)"
@@ -62,11 +59,12 @@ command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"     # `z dir` — sm
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
 # plugins (must be last; syntax-highlighting must be the very last)
-[ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && \
-  source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+for p in zsh-autosuggestions zsh-syntax-highlighting; do
+  for d in "$BREW_PREFIX/share/$p" "$HOME/.local/share/$p"; do
+    [ -f "$d/$p.zsh" ] && { source "$d/$p.zsh"; break; }
+  done
+done
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c7086'
-[ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
-  source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # machine-local overrides (secrets, one-off paths) — not tracked in git
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
