@@ -1,16 +1,8 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
+# login shell: PATH, then hand off to bashrc
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.ghcup/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
-source ~/.bashrc
-# Foundry is opt-in via claude_foundry; do not export these globally.
-# export CLAUDE_CODE_USE_FOUNDRY=1
-# export ANTHROPIC_FOUNDRY_RESOURCE="annabrezgis-resource"
-# export ANTHROPIC_FOUNDRY_API_KEY="[stored in ~/.claude-foundry.env]"
-alias claude_foundry='( set -a; source ~/.claude-foundry.env; set +a; claude )'
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/annabrezgis/.lmstudio/bin"
-# End of LM Studio CLI section
+[ -d "$HOME/.ghcup/bin" ]            && export PATH="$HOME/.ghcup/bin:$PATH"
+[ -d /opt/homebrew/opt/openjdk/bin ] && export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+[ -d "$HOME/.lmstudio/bin" ]         && export PATH="$PATH:$HOME/.lmstudio/bin"
+[ -f "$HOME/.bash_profile.local" ]   && source "$HOME/.bash_profile.local"
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"

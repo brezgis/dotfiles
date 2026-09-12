@@ -1,9 +1,24 @@
-# bash fallback (north / scripts). Interactive shells only.
+# bash config for machines without zsh (north, samovar). Interactive shells only.
 case $- in *i*) ;; *) return ;; esac
-export EDITOR=nvim
-alias ls='eza --icons'
-alias ll='eza --icons -la'
-alias cat='bat'
-alias vim='nvim'
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR=nvim VISUAL=nvim
+export BAT_THEME="Catppuccin Mocha"
+export FZF_DEFAULT_OPTS="
+  --color=fg:#cdd6f4,bg:#1e1e2e,hl:#f38ba8 --color=fg+:#cdd6f4,bg+:#313244,hl+:#f38ba8
+  --color=info:#cba6f7,prompt:#cba6f7,pointer:#f5e0dc,marker:#b4befe,spinner:#f5e0dc,header:#f38ba8"
+HISTSIZE=50000; HISTFILESIZE=50000; HISTCONTROL=ignoreboth; shopt -s histappend
+bind '"\e[A": history-search-backward' 2>/dev/null
+bind '"\e[B": history-search-forward'  2>/dev/null
+
+command -v eza  >/dev/null && { alias ls='eza --icons'; alias ll='eza --icons -la'; alias lt='eza --icons --tree --level=2'; }
+command -v bat  >/dev/null && alias cat='bat'
+command -v nvim >/dev/null && { alias vim='nvim'; alias vi='nvim'; }
+command -v btop >/dev/null && alias top='btop'
+command -v lazygit >/dev/null && alias lg='lazygit'
+y() { local tmp; tmp="$(mktemp -t yazi-cwd.XXXXXX)"; yazi "$@" --cwd-file="$tmp"
+      local cwd; cwd="$(cat -- "$tmp")" && rm -f -- "$tmp"; [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"; }
+
+[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
+command -v zoxide   >/dev/null && eval "$(zoxide init bash)"
 command -v starship >/dev/null && eval "$(starship init bash)"
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"

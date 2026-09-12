@@ -1,0 +1,49 @@
+# identity lives in ~/.gitconfig.local (untracked)
+[include]
+	path = ~/.gitconfig.local
+
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+	default = current
+[fetch]
+	prune = true
+[rebase]
+	autoStash = true
+[merge]
+	conflictstyle = zdiff3
+[diff]
+	algorithm = histogram
+	colorMoved = default
+[rerere]
+	enabled = true
+[help]
+	autocorrect = prompt
+
+[core]
+	pager = delta
+	editor = nvim
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+	features = catppuccin-mocha
+[include]
+	path = ~/Projects/dotfiles/git/catppuccin.gitconfig
+
+[alias]
+	st = status -sb
+	co = checkout
+	sw = switch
+	br = branch
+	ci = commit
+	ca = commit --amend --no-edit
+	lg = log --graph --pretty=format:'%C(yellow)%h%Creset %C(magenta)%ad%Creset %s %C(cyan)%an%Creset%C(auto)%d%Creset' --date=short
+	last = log -1 --stat
+	undo = reset --soft HEAD~1
+	wip = !git add -A && git commit -m wip

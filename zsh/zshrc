@@ -39,6 +39,14 @@ alias cat='bat'
 alias vim='nvim'
 alias vi='nvim'
 alias lg='lazygit'
+alias top='btop'
+alias tn="ssh -t north 'tmux new -A -s main'"   # north, straight into tmux
+y() {  # yazi, and cd to wherever you ended up
+  local tmp; tmp="$(mktemp -t yazi-cwd.XXXXXX)"
+  yazi "$@" --cwd-file="$tmp"
+  local cwd; cwd="$(cat -- "$tmp")" && rm -f -- "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+}
 alias zshrc='nvim ~/Projects/dotfiles/zsh/zshrc && source ~/.zshrc'
 
 # fun stuff / project launchers
@@ -62,3 +70,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c7086'
 
 # machine-local overrides (secrets, one-off paths) — not tracked in git
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+
+# greeting (only in a fresh top-level terminal, not inside tmux/vim/etc.)
+if [[ -o interactive && -z "$TMUX" && -z "$NVIM" && $SHLVL -eq 1 ]] && command -v fastfetch >/dev/null; then
+  fastfetch
+fi
