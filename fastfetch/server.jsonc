@@ -9,12 +9,12 @@
   },
   "modules": [
     { "type": "title",  "format": "{#35}╭─ {#1;35}{user-name}@{host-name} {#35}───────────────────╮", "color": { "user": "magenta", "at": "magenta", "host": "magenta" } },
-    { "type": "os",      "key": "{#35}│{#} {#1}OS", "format": "{name} {version}" },
+    { "type": "os",      "key": "{#35}│{#} {#1}OS", "format": "{name} {version-id}" },
     { "type": "cpu",     "key": "{#35}│{#} {#1}CPU", "format": "{name}" },
     { "type": "memory",  "key": "{#35}│{#} {#1}RAM", "format": "{percentage-bar}  {percentage}" },
     { "type": "disk",    "key": "{#35}│{#} {#1}DISK", "folders": "/", "format": "{size-percentage-bar}  {size-percentage}" },
     { "type": "gpu",     "key": "{#35}│{#} {#1}GPU", "format": "{name}", "hideType": "integrated" },
-    { "type": "loadavg", "key": "{#35}│{#} {#1}LOAD", "format": "{loadavg1}  {loadavg5}  {loadavg15}" },
+    { "type": "loadavg", "key": "{#35}│{#} {#1}LOAD", "format": "{1}  {2}  {3}" },
     { "type": "uptime",  "key": "{#35}│{#} {#1}UPTIME", "format": "{days}d {hours}h" },
     { "type": "shell",   "key": "{#35}│{#} {#1}SHELL", "format": "{exe-name}" },
     { "type": "custom",  "format": "{#35}╰────────────────────────────────╯" }
