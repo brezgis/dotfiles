@@ -1,47 +1,38 @@
 # dotfiles
 
-Anna's terminal configs. Catppuccin Mocha everything.
+Anna's terminal configs. Rosé Pine Moon everything.
 
-## What's here
+## Layout
 
-- `.tmux.conf` — tmux config (Ctrl+A prefix, mouse, Catppuccin Mocha borders, 256color)
-- `.bashrc` — starship prompt, eza/bat aliases (`ls` → `eza --icons`, `ll` → `eza --icons -la`, `cat` → `bat`)
-- `.bash_profile` — PATH setup, conda init, sources .bashrc
-- `Brewfile` — full Homebrew bundle (formulae, casks, VS Code extensions)
+| dir | what |
+|---|---|
+| `zsh/` | `zshrc` (aliases, plugins, fzf/zoxide/starship) + `zprofile` (PATH) |
+| `bash/` | minimal fallback for machines that still run bash (north) |
+| `starship/` | prompt |
+| `tmux/` | Ctrl+A prefix, mouse, Rosé Pine status bar |
+| `nvim/` | tiny `init.lua` — one plugin (the colorscheme), `vim` is aliased to it |
+| `bat/` | Rosé Pine theme for `cat` |
+| `fastfetch/` | logo-less system summary |
+| `Brewfile` | Homebrew bundle |
 
-## Setup on a new machine
+Machine-local overrides go in `~/.zshrc.local` / `~/.bashrc.local` (untracked).
 
-Install Homebrew, then restore everything from the Brewfile:
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew bundle --file=~/dotfiles/Brewfile
-```
-
-Symlink configs:
-
-```bash
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
-```
-
-## Updating
-
-Dump current Homebrew state and push:
+## New machine
 
 ```bash
-brew bundle dump --force --file=~/dotfiles/Brewfile
-cd ~/dotfiles
-git add -A
-git commit -m "Update dotfiles"
-git push
+git clone https://github.com/brezgis/dotfiles ~/Projects/dotfiles
+cd ~/Projects/dotfiles && ./install.sh
+# mac only:
+brew bundle
+bat cache --build
 ```
+
+`install.sh` symlinks everything into place and backs up anything it replaces.
 
 ## Stack
 
 - **Terminal:** iTerm2 + JetBrains Mono Nerd Font
-- **Color scheme:** [Catppuccin Mocha](https://github.com/catppuccin/catppuccin)
+- **Colors:** [Rosé Pine Moon](https://rosepinetheme.com)
+- **Shell:** zsh + zsh-autosuggestions + zsh-syntax-highlighting
 - **Prompt:** [Starship](https://starship.rs)
-- **Shell:** bash
-- **Tools:** eza, bat, fastfetch, lazygit, glow, tmux, cbonsai, asciiquarium
+- **Tools:** eza, bat, fzf, zoxide, lazygit, tmux, fastfetch

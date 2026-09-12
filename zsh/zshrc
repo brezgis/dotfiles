@@ -1,0 +1,64 @@
+# ~/.zshrc — interactive shell config. Rosé Pine Moon everything.
+
+# ---- history ---------------------------------------------------------------
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
+
+# ---- behaviour -------------------------------------------------------------
+setopt AUTO_CD            # `..` or a dir name cd's there
+setopt CORRECT            # "did you mean?" for typo'd commands
+setopt NO_BEEP
+bindkey -e                # emacs-style line editing (Ctrl-A/E, etc.)
+bindkey '^[[A' history-search-backward   # Up arrow searches history by prefix
+bindkey '^[[B' history-search-forward
+
+# ---- completion ------------------------------------------------------------
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case-insensitive
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# ---- environment -----------------------------------------------------------
+export EDITOR=nvim
+export VISUAL=nvim
+export BAT_THEME="rose-pine-moon"
+export FZF_DEFAULT_OPTS="
+  --color=fg:#908caa,bg:#232136,hl:#ea9a97
+  --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+  --color=border:#44415a,header:#3e8fb0,gutter:#232136
+  --color=spinner:#f6c177,info:#9ccfd8
+  --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#c4a7e7"
+
+# ---- aliases ---------------------------------------------------------------
+alias ls='eza --icons'
+alias ll='eza --icons -la'
+alias lt='eza --icons --tree --level=2'
+alias cat='bat'
+alias vim='nvim'
+alias vi='nvim'
+alias lg='lazygit'
+alias zshrc='nvim ~/Projects/dotfiles/zsh/zshrc && source ~/.zshrc'
+
+# fun stuff / project launchers
+alias radio="python3 ~/Projects/radiooooo/radio.py"
+alias menu='bash ~/ClawdbotSync/terminal-menu/menu.sh'
+qwen() { cd ~/Projects/qwen-agent && npm run dev; }
+
+# ---- tools -----------------------------------------------------------------
+BREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
+[ -f "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ] && source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+[ -f "$BREW_PREFIX/opt/fzf/shell/completion.zsh" ]   && source "$BREW_PREFIX/opt/fzf/shell/completion.zsh"
+command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"     # `z dir` — smarter cd
+command -v starship >/dev/null && eval "$(starship init zsh)"
+
+# plugins (must be last; syntax-highlighting must be the very last)
+[ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && \
+  source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6e6a86'
+[ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
+  source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# machine-local overrides (secrets, one-off paths) — not tracked in git
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

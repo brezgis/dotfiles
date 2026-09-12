@@ -1,0 +1,9 @@
+# bash fallback (north / scripts). Interactive shells only.
+case $- in *i*) ;; *) return ;; esac
+export EDITOR=nvim
+alias ls='eza --icons'
+alias ll='eza --icons -la'
+alias cat='bat'
+alias vim='nvim'
+command -v starship >/dev/null && eval "$(starship init bash)"
+[ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
