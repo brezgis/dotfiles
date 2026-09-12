@@ -17,7 +17,7 @@
     { "type": "shell",   "key": "{#35}│{#}   " },
     { "type": "memory",  "key": "{#35}│{#}   " },
     { "type": "disk",    "key": "{#35}│{#}  󰋊 ", "folders": "/", "format": "{size-used} / {size-total} ({size-percentage})" },
-    { "type": "battery", "key": "{#35}│{#}   ", "format": "{capacity}% ({status})" },
+    { "type": "battery", "key": "{#35}│{#}   ", "format": "{capacity} ({status})" },
     { "type": "custom", "format": "{#35}╰──────────────────────────────╯" }
   ]
 }

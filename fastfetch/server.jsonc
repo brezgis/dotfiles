@@ -11,14 +11,14 @@
     { "type": "custom", "format": "{#35}╭──────────────────────────────╮" },
     { "type": "title",  "format": "{#35}│{#}  {user-name-colored}{at-symbol-colored}{host-name-colored}", "color": { "user": "magenta", "at": "white", "host": "blue" } },
     { "type": "custom", "format": "{#35}├──────────────────────────────┤" },
-    { "type": "os",      "key": "{#35}│{#}   ", "format": "{name} {codename} {version}" },
+    { "type": "os",      "key": "{#35}│{#}   ", "format": "{name} {version}" },
     { "type": "host",    "key": "{#35}│{#}  󰌢 " },
     { "type": "uptime",  "key": "{#35}│{#}   " },
     { "type": "shell",   "key": "{#35}│{#}   " },
     { "type": "memory",  "key": "{#35}│{#}   " },
     { "type": "disk",    "key": "{#35}│{#}  󰋊 ", "folders": "/", "format": "{size-used} / {size-total} ({size-percentage})" },
     { "type": "cpu",     "key": "{#35}│{#}   " },
-    { "type": "gpu",     "key": "{#35}│{#}  󰢮 ", "format": "{name}" },
+    { "type": "gpu",     "key": "{#35}│{#}  󰢮 ", "format": "{name}", "hideType": "integrated" },
     { "type": "loadavg", "key": "{#35}│{#}  󰓅 " },
     { "type": "custom", "format": "{#35}╰──────────────────────────────╯" }
   ]
