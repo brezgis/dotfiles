@@ -37,6 +37,7 @@ command -v bat  >/dev/null && alias cat='bat'
 command -v nvim >/dev/null && { alias vim='nvim'; alias vi='nvim'; }
 command -v btop >/dev/null && alias top='btop'
 command -v lazygit >/dev/null && alias lg='lazygit'
+alias caff='caffeinate -i -d'   # keep mac awake (Ctrl-C to stop)
 alias tn="ssh -t north 'tmux new -A -s main'"   # north, straight into tmux
 y() {  # yazi, and cd to wherever you ended up
   local tmp; tmp="$(mktemp -t yazi-cwd.XXXXXX)"
