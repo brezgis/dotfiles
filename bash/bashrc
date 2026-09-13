@@ -26,6 +26,10 @@ command -v starship >/dev/null && eval "$(starship init bash)"
 
 # greeting (fresh top-level shell only); servers get the cpu/gpu card
 if [ -z "$TMUX" ] && [ "$SHLVL" -le 2 ] && command -v fastfetch >/dev/null; then
-  fastfetch -c ~/.config/fastfetch/server.jsonc
+  if [ "$(tput cols 2>/dev/null || echo 80)" -ge 100 ]; then
+    fastfetch -c ~/.config/fastfetch/server.jsonc
+  else
+    fastfetch -c ~/.config/fastfetch/server.jsonc --logo ubuntu_small --logo-padding-right 2
+  fi
 fi
 

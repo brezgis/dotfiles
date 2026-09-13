@@ -5,7 +5,7 @@
   "modules": [
     { "type": "title", "color": { "user": "magenta", "at": "white", "host": "blue" } },
     { "type": "separator", "string": "─", "length": 22 },
-    { "type": "os",       "key": "OS",       "keyColor": "magenta", "format": "{name} {codename} {version} {arch}" },
+    { "type": "os",       "key": "OS",       "keyColor": "magenta", "format": "{name} {version-id} {arch}" },
     { "type": "host",     "key": "Host",     "keyColor": "magenta" },
     { "type": "kernel",   "key": "Kernel",   "keyColor": "magenta" },
     { "type": "uptime",   "key": "Uptime",   "keyColor": "magenta" },
