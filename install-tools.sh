@@ -41,7 +41,7 @@ echo ">> fastfetch"; curl -fsSL "https://github.com/fastfetch-cli/fastfetch/rele
 mv "$T"/fastfetch-*/usr/bin/fastfetch "$BIN/"
 
 v=$(gh_latest atuinsh/atuin); echo ">> atuin $v"
-curl -fsSL "https://github.com/atuinsh/atuin/releases/download/$v/atuin-$RUST.tar.gz" | tar xz -C "$T"; mv "$T"/atuin-*/atuin "$BIN/"
+curl -fsSL "https://github.com/atuinsh/atuin/releases/download/$v/atuin-${RUST/gnu/musl}.tar.gz" | tar xz -C "$T"; mv "$T"/atuin-*/atuin "$BIN/"
 
 # zsh plugins (used by zshrc when brew's copies aren't present)
 for p in zsh-autosuggestions zsh-syntax-highlighting; do
