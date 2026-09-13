@@ -1,0 +1,30 @@
+{
+  "profiles": [
+    {
+      "name": "Default",
+      "selected": true,
+      "virtual_hid_keyboard": { "keyboard_type_v2": "iso" },
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "§ key (under Esc) → backtick; Shift-§ → tilde",
+            "manipulators": [
+              { "type": "basic",
+                "from": { "key_code": "non_us_backslash", "modifiers": { "optional": ["any"] } },
+                "to":   [{ "key_code": "grave_accent_and_tilde" }] }
+            ]
+          },
+          {
+            "description": "Caps Lock → Esc when tapped, Ctrl when held",
+            "manipulators": [
+              { "type": "basic",
+                "from": { "key_code": "caps_lock", "modifiers": { "optional": ["any"] } },
+                "to":   [{ "key_code": "left_control", "lazy": true }],
+                "to_if_alone": [{ "key_code": "escape" }] }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

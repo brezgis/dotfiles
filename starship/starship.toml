@@ -3,7 +3,7 @@ palette = "catppuccin_mocha"
 add_newline = true
 
 format = """
-$directory$git_branch$git_status$python$nodejs$java$haskell$cmd_duration
+$username$hostname$directory$git_branch$git_status$python$nodejs$java$haskell$cmd_duration
 $character"""
 
 right_format = "$time"
@@ -21,6 +21,17 @@ peach    = "#fab387"
 blue    = "#89b4fa"
 teal    = "#94e2d5"
 mauve    = "#cba6f7"
+
+[username]
+show_always = false            # only when SSH'd or root
+style_user = "bold yellow"
+style_root = "bold red"
+format = "[$user]($style)[@](overlay0)"
+
+[hostname]
+ssh_only = true
+style = "bold yellow"
+format = "[$hostname]($style) "
 
 [character]
 success_symbol = "[❯](bold mauve)"

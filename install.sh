@@ -35,3 +35,4 @@ link atuin                 "$HOME/.config/atuin"
 # tmux plugin manager
 [ -d "$HOME/.tmux/plugins/tpm" ] || git clone -q https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 "$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1 && echo "tmux plugins installed"
+link karabiner/karabiner.json "$HOME/.config/karabiner/karabiner.json"
