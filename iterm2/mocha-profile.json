@@ -181,7 +181,7 @@
    "Normal Font": "JetBrainsMonoNFM-Regular 13",
    "Non Ascii Font": "JetBrainsMonoNFM-Regular 13",
    "Use Non-ASCII Font": false,
-   "ASCII Ligatures": true,
+   "ASCII Ligatures": false,
    "Vertical Spacing": 1.1,
    "Transparency": 0.08,
    "Blur": true,
@@ -191,7 +191,7 @@
    "Rows": 36,
    "Cursor Type": 2,
    "Blinking Cursor": true,
-   "Unlimited Scrollback": true,
+   "Unlimited Scrollback": false,
    "Silence Bell": true,
    "Visual Bell": false,
    "Option Key Sends": 2,
@@ -199,7 +199,11 @@
    "Custom Directory": "Recycle",
    "Minimum Contrast": 0.0,
    "Use Bright Bold": true,
-   "Draw Powerline Glyphs": true
+   "Draw Powerline Glyphs": true,
+   "Unicode Version": 9,
+   "Ambiguous Double Width": false,
+   "Scrollback Lines": 100000,
+   "Scrollback in Alternate Screen": true
   }
  ]
 }
