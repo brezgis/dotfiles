@@ -36,3 +36,11 @@ link atuin                 "$HOME/.config/atuin"
 [ -d "$HOME/.tmux/plugins/tpm" ] || git clone -q https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 "$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1 && echo "tmux plugins installed"
 link karabiner/karabiner.json "$HOME/.config/karabiner/karabiner.json"
+# mac-only: downloads tidier on an hourly launchd timer
+if [ "$(uname -s)" = Darwin ]; then
+  link mac/bin/tidy-downloads "$HOME/.local/bin/tidy-downloads"
+  mkdir -p "$HOME/Library/LaunchAgents"
+  cp "$DOTFILES/mac/launchd/com.anna.tidy-downloads.plist" "$HOME/Library/LaunchAgents/"
+  launchctl bootout "gui/$(id -u)/com.anna.tidy-downloads" 2>/dev/null || true
+  launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.anna.tidy-downloads.plist" && echo "tidy-downloads scheduled (hourly)"
+fi
