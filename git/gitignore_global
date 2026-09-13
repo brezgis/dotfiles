@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+# editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+# node
+node_modules/
+# env / secrets
+.env
+.env.*
+!.env.example
+# misc
+*.log
+.cache/

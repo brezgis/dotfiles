@@ -40,6 +40,9 @@ curl -fsSL "https://github.com/dandavison/delta/releases/download/$v/delta-$v-$R
 echo ">> fastfetch"; curl -fsSL "https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-$FF.tar.gz" | tar xz -C "$T"
 mv "$T"/fastfetch-*/usr/bin/fastfetch "$BIN/"
 
+echo ">> atuin"; curl -sSfL https://setup.atuin.sh | sh -s -- --no-modify-path >/dev/null 2>&1 || true
+[ -x "$HOME/.atuin/bin/atuin" ] && ln -sfn "$HOME/.atuin/bin/atuin" "$BIN/atuin"
+
 # zsh plugins (used by zshrc when brew's copies aren't present)
 for p in zsh-autosuggestions zsh-syntax-highlighting; do
   d="$HOME/.local/share/$p"; [ -d "$d" ] && git -C "$d" pull -q || git clone -q --depth 1 "https://github.com/zsh-users/$p" "$d"

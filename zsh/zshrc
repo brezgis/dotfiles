@@ -57,6 +57,7 @@ BREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
 [ -f "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ] && source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 [ -f "$BREW_PREFIX/opt/fzf/shell/completion.zsh" ]   && source "$BREW_PREFIX/opt/fzf/shell/completion.zsh"
 command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"     # `z dir` — smarter cd
+command -v atuin    >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"   # Ctrl-R = history search
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
 # plugins (must be last; syntax-highlighting must be the very last)

@@ -30,3 +30,8 @@ link git/gitconfig        "$HOME/.gitconfig"
 link btop                 "$HOME/.config/btop"
 link yazi                 "$HOME/.config/yazi"
 link iterm2/mocha-profile.json "$HOME/Library/Application Support/iTerm2/DynamicProfiles/mocha.json"
+link git/gitignore_global  "$HOME/.config/git/ignore"
+link atuin                 "$HOME/.config/atuin"
+# tmux plugin manager
+[ -d "$HOME/.tmux/plugins/tpm" ] || git clone -q https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+"$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1 && echo "tmux plugins installed"

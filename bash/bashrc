@@ -20,6 +20,7 @@ y() { local tmp; tmp="$(mktemp -t yazi-cwd.XXXXXX)"; yazi "$@" --cwd-file="$tmp"
 
 [ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 command -v zoxide   >/dev/null && eval "$(zoxide init bash)"
+command -v atuin    >/dev/null && eval "$(atuin init bash --disable-up-arrow)"   # Ctrl-R = history search
 command -v starship >/dev/null && eval "$(starship init bash)"
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
 
