@@ -72,12 +72,15 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c7086'
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
 # greeting (only in a fresh top-level terminal, not inside tmux/vim/etc.)
-# linux boxes use server.jsonc; narrow terminals (phone SSH) get the small logo
+# mac: always the full apple logo. linux: server.jsonc, and shrink the logo
+# on narrow terminals (phone SSH) so it doesn't wrap.
 if [[ -o interactive && -z "$TMUX" && -z "$NVIM" && $SHLVL -eq 1 ]] && command -v fastfetch >/dev/null; then
   _ff=()
-  [[ "$OSTYPE" == linux* ]] && _ff+=(--config "$HOME/.config/fastfetch/server.jsonc")
-  if   (( ${COLUMNS:-80} < 70 )); then _ff+=(--logo none)          # phone portrait
-  elif (( ${COLUMNS:-80} < 90 )); then _ff+=(--logo-type small)    # phone landscape / split pane
+  if [[ "$OSTYPE" == linux* ]]; then
+    _ff+=(--config "$HOME/.config/fastfetch/server.jsonc")
+    if   (( ${COLUMNS:-80} < 70 )); then _ff+=(--logo none)          # phone portrait
+    elif (( ${COLUMNS:-80} < 90 )); then _ff+=(--logo-type small)    # phone landscape / split pane
+    fi
   fi
   fastfetch "${_ff[@]}"
   unset _ff
