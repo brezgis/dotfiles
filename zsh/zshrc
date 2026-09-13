@@ -73,9 +73,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c7086'
 
 # greeting (only in a fresh top-level terminal, not inside tmux/vim/etc.)
 if [[ -o interactive && -z "$TMUX" && -z "$NVIM" && $SHLVL -eq 1 ]] && command -v fastfetch >/dev/null; then
-  if [ "$(tput cols 2>/dev/null || echo 80)" -ge 100 ]; then
-    fastfetch
-  else
-    fastfetch --logo apple_small --logo-padding-right 2
-  fi
+  fastfetch
 fi
